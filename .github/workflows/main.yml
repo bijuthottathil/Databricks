@@ -1,38 +1,37 @@
-name: Run pre-merge Databricks tests
+name: Deploy Databricks Bundle
 
 on:
- workflow_dispatch
-
-env:
-  # Replace this value with your workspace instance name.
-  DATABRICKS_HOST: "https://adb-2058598773075952.12.azuredatabricks.net"
+  push:
+    branches:
+      - main
+  push:
+    tags:
+      - 'v*.*.*'  # For example: v1.0.0
 
 jobs:
-  unit-test-notebook:
+  deploy-dev:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
+    name: Deploy to Dev Workspace
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Run test notebook
-        uses: databricks/run-notebook@main
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          databricks-token: "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"
+          python-version: '3.10'
 
-          local-notebook-path: notebooks/run_unit_tests.py
+      - name: Install Databricks CLI
+        run: |
+          pip install databricks-cli
 
-          existing-cluster-id: "0618-143005-4129aztx"
+      - name: Configure Databricks CLI for Dev
+        run: |
+          databricks auth login --host ${{ secrets.DATABRICKS_HOST_DEV }} --token ${{ secrets.DATABRICKS_TOKEN_DEV }}
 
-          git-commit: '${{ github.event.pull_request.head.sha }}'
+      - name: Deploy to Dev
+        run: |
+          databricks bundle deploy --target dev --bundle bundles/dev/bundle.yml
 
-          # Grant all users view permission on the notebook's results, so that they can
-          # see the result of the notebook, if they have related access permissions.
-          access-control-list-json: >
-            [
-              {
-                "group_name": "users",
-                "permission_level": "CAN_VIEW"
-              }
-            ]
-          run-name: 'EDA transforms helper module unit tests'
+ 
