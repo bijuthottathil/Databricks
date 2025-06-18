@@ -1,12 +1,7 @@
 name: Deploy Databricks Bundle
 
 on:
-  push:
-    branches:
-      - main
-  push:
-    tags:
-      - 'v*.*.*'  # For example: v1.0.0
+  workflow_dispatch
 
 jobs:
   deploy-dev:
@@ -30,8 +25,6 @@ jobs:
         run: |
           databricks auth login --host ${{ secrets.DATABRICKS_HOST_DEV }} --token ${{ secrets.DATABRICKS_TOKEN_DEV }}
 
-      - name: Deploy to Dev
-        run: |
-          databricks bundle deploy --target dev --bundle bundles/dev/bundle.yml
+
 
  
