@@ -21,14 +21,13 @@ jobs:
         run: |
           pip install databricks-cli
 
-      - name: List Workspace Contents
+      - name: Create Databricks profile from secrets
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
-          echo "[default]" > ~/.databrickscfg
-          echo "host = $DATABRICKS_HOST" >> ~/.databrickscfg
-          echo "token = $DATABRICKS_TOKEN" >> ~/.databrickscfg
+          mkdir -p ~/.databricks
+          databricks auth login --host $DATABRICKS_HOST --token $DATABRICKS_TOKEN --profile github-actions-profile
 
-          echo "Listing Databricks Workspace Root:"
-           databricks workspace list / --profile DEFAULT
+      - name: List workspace root
+        run: databricks workspace list / --profile github-actions-profile
