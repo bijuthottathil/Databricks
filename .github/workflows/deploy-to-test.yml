@@ -14,13 +14,18 @@ jobs:
       - name: Install Databricks CLI v0.200+
         run: |
           curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | bash
-
+      - name: Login to Dev
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DEV_DATABRICKS_TOKEN_DEV }}
+          DATABRICKS_HOST: ${{ secrets.DEV_DATABRICKS_HOST_DEV }}
+        run: |
+          databricks auth login --host $DATABRICKS_HOST_DEV --token $DATABRICKS_TOKEN_DEV --profile dev-env
       - name: Authenticate with Databricks
         env:
           DATABRICKS_TOKEN: ${{ secrets.TEST_DATABRICKS_TOKEN_DEV }}
           DATABRICKS_HOST: ${{ secrets.TEST_DATABRICKS_HOST_DEV }}
         run: |
-          databricks auth login --host $DATABRICKS_HOST --token $DATABRICKS_TOKEN --profile test-env
+          databricks auth login --host $DATABRICKS_HOST_DEV --token $DATABRICKS_TOKEN_DEV --profile test-env
 
       - name: Deploy Bundle to Test
         run: |
