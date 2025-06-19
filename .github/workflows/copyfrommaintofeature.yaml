@@ -1,0 +1,40 @@
+name: copy from main to feature branch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  list-workspace:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install new Databricks CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | bash
+
+      - name: List workspace contents
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_DEV }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_DEV }}
+        run: |
+           run: |
+            echo "📁 Creating backup folder..."
+            mkdir -p workspace_exported
+            databricks workspace export-dir /Workspace/Users/bijumathewt@gmail.com/Databricks/Notebooks workspace_exported --overwrite
+
+      - name: Commit exported notebooks to test branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Switch to test branch
+          git fetch origin feature1
+          git checkout feature1 || git checkout -b feature1
+
+          # Copy exported content
+          rm -rf notebooks
+          mv workspace_exported notebooks
+
+          git add notebooks
+          git commit -m "🔄 Sync notebooks from dev to test branch"
+          git push origin feature1
