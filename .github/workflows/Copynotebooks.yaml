@@ -17,5 +17,5 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
         run: |
-          databricks config profile set github-actions --host $DATABRICKS_HOST --token $DATABRICKS_TOKEN
+          databricks configure profile set github-actions --host $DATABRICKS_HOST --token $DATABRICKS_TOKEN
           databricks workspace list / --profile github-actions
