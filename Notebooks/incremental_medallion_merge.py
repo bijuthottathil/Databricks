@@ -20,7 +20,7 @@ gold_path = "abfss://oillakehouse@lakehouse.dfs.core.windows.net/medallion/gold/
 from pyspark.sql.functions import input_file_name, lit
 
 # Parameter: ingestion date (e.g., '2025-06-17')
-target_date = "2025-06-19"
+target_date = "2025-06-15"
 
 # Define input path for the date partition in ADLS (external location)
 input_path = f"abfss://lakehouse@oillakehouse.dfs.core.windows.net/medallion/raw/sensor_data/{target_date}"
