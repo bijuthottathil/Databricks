@@ -1,9 +1,7 @@
 name: Export Workspace to Feature Branch
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch
 
 jobs:
   export-and-commit:
@@ -21,8 +19,8 @@ jobs:
 
       - name: Export Workspace Content
         env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_DEV }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_DEV }}
         run: |
           mkdir -p exported_notebooks
           databricks workspace export-dir /Workspace/Users/bijumathewt@gmail.com/Databricks exported_notebooks --overwrite
