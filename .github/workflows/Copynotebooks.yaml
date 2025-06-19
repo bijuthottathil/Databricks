@@ -1,4 +1,4 @@
-name: List Workspace with New CLI
+name: Databricks Workspace List (New CLI)
 
 on:
   workflow_dispatch:
@@ -12,10 +12,9 @@ jobs:
         run: |
           curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | bash
 
-      - name: Authenticate and list workspace
+      - name: List workspace contents
         env:
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_DEV }}
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_DEV }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
-          databricks configure profile set github-actions --host $DATABRICKS_HOST --token $DATABRICKS_TOKEN
-          databricks workspace list / --profile github-actions
+          databricks workspace list /
