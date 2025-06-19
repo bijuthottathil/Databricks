@@ -1,33 +1,27 @@
-name: Copy Note Books
+name: List Workspace with Legacy CLI
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
-  deploy-dev:
-    if: github.ref == 'refs/heads/main'
+  list-workspace:
     runs-on: ubuntu-latest
-    name: Deploy to Dev Workspace
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+      - name: Install Legacy Databricks CLI
+        run: pip install databricks-cli==0.17.7
 
-      - name: Install Databricks CLI v0.205+
-        run: |
-          pip install databricks-cli
-
-      - name: Create Databricks profile from secrets
+      - name: Configure CLI using secrets
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
-          mkdir -p ~/.databricks
-          databricks auth login --host $DATABRICKS_HOST --token $DATABRICKS_TOKEN --profile github-actions-profile
+          echo "[DEFAULT]" > ~/.databrickscfg
+          echo "host = $DATABRICKS_HOST" >> ~/.databrickscfg
+          echo "token = $DATABRICKS_TOKEN" >> ~/.databrickscfg
 
-      - name: List workspace root
-        run: databricks workspace list / --profile github-actions-profile
+      - name: List Workspace
+        run: databricks workspace list /
