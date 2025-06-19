@@ -1,0 +1,38 @@
+{
+  "created_time":1750347505649,
+  "creator_user_name":"bijumathewt@gmail.com",
+  "job_id":85918714925735,
+  "run_as_user_name":"bijumathewt@gmail.com",
+  "settings": {
+    "email_notifications": {
+      "no_alert_for_skipped_runs":false
+    },
+    "format":"MULTI_TASK",
+    "git_source": {
+      "git_branch":"job",
+      "git_provider":"gitHub",
+      "git_url":"https://github.com/bijuthottathil/Databricks"
+    },
+    "max_concurrent_runs":1,
+    "name":"Oil Job",
+    "queue": {
+      "enabled":true
+    },
+    "tasks": [
+      {
+        "email_notifications": {},
+        "existing_cluster_id":"0619-134413-d4o4ht82",
+        "notebook_task": {
+          "notebook_path":"/Workspace/Users/bijumathewt@gmail.com/Databricks/Notebooks/incremental_medallion_merge",
+          "source":"WORKSPACE"
+        },
+        "run_if":"ALL_SUCCESS",
+        "task_key":"OilPipeline",
+        "timeout_seconds":0,
+        "webhook_notifications": {}
+      }
+    ],
+    "timeout_seconds":0,
+    "webhook_notifications": {}
+  }
+}
