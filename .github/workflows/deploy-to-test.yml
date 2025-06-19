@@ -1,0 +1,27 @@
+name: Deploy to Test Workspace
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-to-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Databricks CLI v0.200+
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | bash
+
+      - name: Authenticate with Databricks
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.TEST_DATABRICKS_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.TEST_DATABRICKS_HOST }}
+        run: |
+          databricks auth login --host $DATABRICKS_HOST --token $DATABRICKS_TOKEN --profile test-env
+
+      - name: Deploy Bundle to Test
+        run: |
+          databricks bundle deploy --target test --profile test-env
