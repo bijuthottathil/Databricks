@@ -11,21 +11,27 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install Databricks CLI v0.200+
+      - name: Install Databricks CLI
         run: |
           curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | bash
-      - name: Login to Dev
-        env:
-          DATABRICKS_TOKEN: ${{ secrets.DEV_DATABRICKS_TOKEN_DEV }}
-          DATABRICKS_HOST: ${{ secrets.DEV_DATABRICKS_HOST_DEV }}
+
+      - name: Authenticate with Dev Databricks
         run: |
-          databricks auth login --host $DATABRICKS_HOST_DEV --token $DATABRICKS_TOKEN_DEV --profile dev-env
-      - name: Authenticate with Databricks
+          databricks configure profile set dev-env --host $DATABRICKS_HOST_DEV --token $DATABRICKS_TOKEN_DEV
         env:
-          DATABRICKS_TOKEN: ${{ secrets.TEST_DATABRICKS_TOKEN_DEV }}
-          DATABRICKS_HOST: ${{ secrets.TEST_DATABRICKS_HOST_DEV }}
+          DATABRICKS_HOST_DEV: ${{ secrets.DEV_DATABRICKS_HOST }}
+          DATABRICKS_TOKEN_DEV: ${{ secrets.DEV_DATABRICKS_TOKEN }}
+
+      - name: Authenticate with Test Databricks
         run: |
-          databricks auth login --host $DATABRICKS_HOST_DEV --token $DATABRICKS_TOKEN_DEV --profile test-env
+          databricks configure profile set test-env --host $DATABRICKS_HOST_TEST --token $DATABRICKS_TOKEN_TEST
+        env:
+          DATABRICKS_HOST_TEST: ${{ secrets.TEST_DATABRICKS_HOST }}
+          DATABRICKS_TOKEN_TEST: ${{ secrets.TEST_DATABRICKS_TOKEN }}
+
+      - name: Validate Bundle (Optional)
+        run: |
+          databricks bundle validate --target dev --profile dev-env
 
       - name: Deploy Bundle to Test
         run: |
