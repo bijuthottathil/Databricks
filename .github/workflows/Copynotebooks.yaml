@@ -17,4 +17,15 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_DEV }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_DEV }}
         run: |
-          databricks workspace list /
+           run: |
+            echo "📁 Creating backup folder..."
+            databricks workspace mkdirs /Workspace/Users/bijumathewt@gmail.com/Databricks/backup
+
+            echo "📤 Exporting notebooks to local directory..."
+            mkdir -p notebooks_exported
+            databricks workspace export-dir /Workspace/Users/bijumathewt@gmail.com/Databricks/Notebooks notebooks_exported --overwrite
+
+            echo "📥 Importing notebooks to backup folder..."
+            databricks workspace import-dir notebooks_exported /Workspace/Users/bijumathewt@gmail.com/Databricks/backup --overwrite
+
+            echo "✅ Backup complete."
