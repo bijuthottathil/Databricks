@@ -1,40 +1,45 @@
-name: copy from main to feature branch
+name: Export Workspace to Feature Branch
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  list-workspace:
+  export-and-commit:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install new Databricks CLI
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # required to switch branches
+
+      - name: Install Databricks CLI (new)
         run: |
           curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | bash
 
-      - name: List workspace contents
+      - name: Export Workspace Content
         env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_DEV }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_DEV }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
-           run: |
-            echo "📁 Creating backup folder..."
-            mkdir -p workspace_exported
-            databricks workspace export-dir /Workspace/Users/bijumathewt@gmail.com/Databricks/Notebooks workspace_exported --overwrite
+          mkdir -p exported_notebooks
+          databricks workspace export-dir /Workspace/Users/bijumathewt@gmail.com/Databricks exported_notebooks --overwrite
 
-      - name: Commit exported notebooks to test branch
+      - name: Switch to feature1 branch
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Switch to test branch
-          git fetch origin feature1
           git checkout feature1 || git checkout -b feature1
 
-          # Copy exported content
-          rm -rf notebooks
-          mv workspace_exported notebooks
+      - name: Copy exported notebooks to tracked folder
+        run: |
+          mkdir -p workspace_backup
+          cp -r exported_notebooks/* workspace_backup/
 
-          git add notebooks
-          git commit -m "🔄 Sync notebooks from dev to test branch"
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add workspace_backup
+          git commit -m "🚀 Exported notebooks from workspace" || echo "No changes to commit"
           git push origin feature1
