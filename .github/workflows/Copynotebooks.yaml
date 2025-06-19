@@ -19,19 +19,16 @@ jobs:
 
       - name: Install Databricks CLI v0.205+
         run: |
-          pip install databricks-cli[bundle] --upgrade
+          pip install databricks-cli
 
-      - name: Configure Databricks CLI for Dev
+      - name: List Workspace Contents
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
-          mkdir -p ~/.databricks
-          cat <<EOF > ~/.databricks/config
-          {
-            "default": {
-              "host": "${{ secrets.DATABRICKS_HOST_DEV }}",
-              "token": "${{ secrets.DATABRICKS_TOKEN_DEV }}"
-            }
-          }
-      - name: Export notebooks from source folder
-        run: |
+          echo "[default]" > ~/.databrickscfg
+          echo "host = $DATABRICKS_HOST" >> ~/.databrickscfg
+          echo "token = $DATABRICKS_TOKEN" >> ~/.databrickscfg
+
+          echo "Listing Databricks Workspace Root:"
            databricks workspace list / --profile DEFAULT
-
