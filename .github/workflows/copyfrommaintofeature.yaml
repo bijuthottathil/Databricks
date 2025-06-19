@@ -44,7 +44,8 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git remote set-url origin https://x-access-token:$GH_PAT@github.com/bijuthottathil/Databricks
+          git remote set-url origin https://x-access-token:$GH_PAT@github.com/${{ github.repository }}
+
           git add workspace_backup
           git commit -m "🚀 Exported notebooks from workspace" || echo "No changes to commit"
           git push origin feature1
