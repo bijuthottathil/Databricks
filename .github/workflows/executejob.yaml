@@ -31,8 +31,8 @@ jobs:
               "token": "${{ secrets.DATABRICKS_TOKEN_DEV }}"
             }
           }
-          EOF
+      - name: Export notebooks from source folder
+        run: |
+          mkdir -p notebooks_exported
+          databricks workspace export_dir //Workspace/Users/bijumathewt@gmail.com/Databricks/Notebooks notebooks_exported --overwrite
 
-
-
- 
