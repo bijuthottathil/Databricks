@@ -33,5 +33,5 @@ jobs:
           }
       - name: Export notebooks from source folder
         run: |
-           databricks workspace list / --profile DEFAULTe
+           databricks workspace list / --profile DEFAULT
 
