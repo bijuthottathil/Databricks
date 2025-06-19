@@ -1,4 +1,4 @@
-name: Deploy Databricks Bundle
+name: Copy Note Books
 
 on:
   workflow_dispatch
