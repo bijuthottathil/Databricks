@@ -23,7 +23,7 @@ jobs:
         run: |
           mkdir -p ~/.databricks
           echo "[test]" > ~/.databrickscfg
-          echo "host = https://<your-test-workspace>.cloud.databricks.com" >> ~/.databrickscfg
+          echo "host = https://adb-3378109637561353.13.azuredatabricks.net/" >> ~/.databrickscfg
           echo "token = ${{ secrets.DATABRICKS_TOKEN_TEST }}" >> ~/.databrickscfg
         shell: bash
 
