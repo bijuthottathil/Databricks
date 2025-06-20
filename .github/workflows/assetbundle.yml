@@ -1,0 +1,32 @@
+name: Deploy Notebooks to Test Databricks Workspace
+
+on:
+  workflow_dispatch:  # Trigger manually from GitHub UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ✅ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Install Databricks CLI (v0.205+)
+        run: pip install databricks-cli
+
+      - name: 🔐 Configure Databricks Test Profile
+        run: |
+          mkdir -p ~/.databricks
+          echo "[test]" > ~/.databrickscfg
+          echo "host = https://<your-test-workspace>.cloud.databricks.com" >> ~/.databrickscfg
+          echo "token = ${{ secrets.DATABRICKS_TOKEN_TEST }}" >> ~/.databrickscfg
+        shell: bash
+
+      - name: 🚀 Deploy Asset Bundle to Test
+        run: |
+          databricks bundle deploy --target test --profile test
