@@ -6,7 +6,9 @@
 Please watch out my medium article to understand the steps I followed
 
 
-# https://medium.com/@bijumathewt/databricks-asset-bundle-deployment-using-databricks-cli-and-vs-code-a9519deba958
+# https://medium.com/@bijumathewt/databricks-asset-bundle-deployment-using-databricks-cli-and-vs-code-a9519deba958  
+
+  
 
 
 # Section 2 - DLT
