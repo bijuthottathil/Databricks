@@ -1,4 +1,7 @@
 # Databricks Asset Bundle Deployment using Databricks CLI and VS Code
+
+![image](https://github.com/user-attachments/assets/a188dbf5-2d99-494c-ae08-05b8031aaba5)
+
 Please watch out my medium article to understand the steps I followed
 
 
