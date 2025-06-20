@@ -12,7 +12,7 @@ targets:
     workspace:
       host: https://adb-2058598773075952.12.azuredatabricks.net
 
-  ## Optionally, there could be 'staging' or 'prod' targets here.
+  ## Optionally, there could be 'staging' or 'prod' targetbbbbs here.
   #
   # prod:
   #   workspace:
