@@ -4,12 +4,26 @@
 ![image](https://github.com/user-attachments/assets/88534ff2-ce48-4328-9190-493ab2a0f969)
 
 Please watch out my medium article to understand the steps I followed
+---------------------------------------------------------------------------------------------------------------------
+
 
 
 # https://medium.com/@bijumathewt/databricks-asset-bundle-deployment-using-databricks-cli-and-vs-code-a9519deba958  
 
 # Section 2  - Process Order Data using Medallion 
 
+All files are available in repository. Execution steps can follow from 1....
+
+![image](https://github.com/user-attachments/assets/fd8e1eaf-c8c6-466c-bc8a-35c260433d4a)
+
+All external locations are pointing to containers in ADLS  
+
+![image](https://github.com/user-attachments/assets/5fd7f3af-a474-4907-836c-b33699b90200)
+
+
+I have used Unity Catalog to store delta tables.    
+
+![image](https://github.com/user-attachments/assets/53bca8b1-e034-473b-8bb6-ddda84c5b27e)
 
 
 ![image](https://github.com/user-attachments/assets/31220aa6-2ad8-47a3-8175-9bf9cd933a6e)  
