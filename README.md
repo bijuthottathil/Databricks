@@ -12,6 +12,9 @@ Please watch out my medium article to understand the steps I followed
 
 # Section 2  - Process Order Data using Medallion 
 
+![image](https://github.com/user-attachments/assets/08a253cc-2edc-4f9f-8a57-d15ada6a2b23)
+
+
 All files are available in repository. Execution steps can follow from 1....
 
 ![image](https://github.com/user-attachments/assets/fd8e1eaf-c8c6-466c-bc8a-35c260433d4a)   
