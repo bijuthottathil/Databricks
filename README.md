@@ -14,7 +14,24 @@ Please watch out my medium article to understand the steps I followed
 
 All files are available in repository. Execution steps can follow from 1....
 
-![image](https://github.com/user-attachments/assets/fd8e1eaf-c8c6-466c-bc8a-35c260433d4a)
+![image](https://github.com/user-attachments/assets/fd8e1eaf-c8c6-466c-bc8a-35c260433d4a)   
+
+
+Json Data Format is here 
+
+{"order_id":"ORD-78534","customer_id":"CUST-3080","product_id":"PROD-646","quantity":10,"price":499.02,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"CANCELLED"}
+{"order_id":"ORD-88093","customer_id":"CUST-6168","product_id":"PROD-567","quantity":9,"price":355.91,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"PENDING"}
+{"order_id":"ORD-84206","customer_id":"CUST-3602","product_id":"PROD-466","quantity":4,"price":273.94,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"COMPLETED"}
+{"order_id":"ORD-87743","customer_id":"CUST-5625","product_id":"PROD-506","quantity":2,"price":255.11,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"COMPLETED"}
+{"order_id":"ORD-61406","customer_id":"CUST-6899","product_id":"PROD-570","quantity":9,"price":453.24,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"SHIPPED"}
+{"order_id":"ORD-36705","customer_id":"CUST-4765","product_id":"PROD-556","quantity":4,"price":63.04,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"COMPLETED"}
+{"order_id":"ORD-70191","customer_id":"CUST-6502","product_id":"PROD-594","quantity":9,"price":244.56,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"COMPLETED"}
+{"order_id":"ORD-12211","customer_id":"CUST-6082","product_id":"PROD-597","quantity":1,"price":486.73,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"CANCELLED"}
+{"order_id":"ORD-97726","customer_id":"CUST-3627","product_id":"PROD-478","quantity":3,"price":192.96,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"SHIPPED"}
+{"order_id":"ORD-75194","customer_id":"CUST-4578","product_id":"PROD-576","quantity":6,"price":487.33,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"PENDING"}
+{"order_id":"ORD-54458","customer_id":"CUST-4667","product_id":"PROD-500","quantity":6,"price":17.24,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"CANCELLED"}
+{"order_id":"ORD-21510","customer_id":"CUST-5572","product_id":"PROD-578","quantity":10,"price":452.67,"order_timestamp":"2025-06-23T19:23:09.161Z","status":"COMPLETED"}
+
 
 All external locations are pointing to containers in ADLS  
 
