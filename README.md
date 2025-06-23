@@ -8,10 +8,17 @@ Please watch out my medium article to understand the steps I followed
 
 # https://medium.com/@bijumathewt/databricks-asset-bundle-deployment-using-databricks-cli-and-vs-code-a9519deba958  
 
+# Section 2  - Process Order Data using Medallion 
+
+
+
+![image](https://github.com/user-attachments/assets/31220aa6-2ad8-47a3-8175-9bf9cd933a6e)
+
+
   
 
 
-# Section 2 - DLT
+# Section 3 - DLT
 ![image](https://github.com/user-attachments/assets/83a3675c-9daf-4082-b730-860ebf107606)
 
 
