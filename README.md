@@ -68,3 +68,25 @@ I have used Unity Catalog to store delta tables.
 ![image](https://github.com/user-attachments/assets/0ad38d88-3229-4d3f-b064-ddbcf355bdf3)
 
 ![image](https://github.com/user-attachments/assets/142b1326-8a24-4c43-94ba-b0b1334a0a5d)
+
+
+# Section 4 Autoloader Streaming using Unity Catalog
+
+![image](https://github.com/user-attachments/assets/6fdde8c7-bd43-4508-86d8-3aa097541a55)
+
+
+![image](https://github.com/user-attachments/assets/a3434da9-f590-4393-a42a-61d3f4db162f)   
+
+
+![image](https://github.com/user-attachments/assets/1f634353-963c-41c0-9acd-2ea538562500)  
+
+
+![image](https://github.com/user-attachments/assets/95669e9c-cb94-499f-a881-34d75ff0e54d)
+
+
+![image](https://github.com/user-attachments/assets/38a28df9-5551-4ed9-bd93-4972c39c80cb)
+
+
+![image](https://github.com/user-attachments/assets/19cbe31b-c5f2-4a00-b2fc-d2e394e6a4c3)
+
+
