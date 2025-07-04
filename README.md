@@ -90,3 +90,8 @@ I have used Unity Catalog to store delta tables.
 ![image](https://github.com/user-attachments/assets/19cbe31b-c5f2-4a00-b2fc-d2e394e6a4c3)
 
 
+
+# Section 5 Connecting to Azure SQL from Databricks using JDBC
+
+![image](https://github.com/user-attachments/assets/b3fdfc1b-c26f-4150-aafe-2c4b17ee83b5)
+
