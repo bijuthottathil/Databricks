@@ -1,6 +1,6 @@
 
 # Databricks Asset Bundle Deployment using Databricks CLI and VS Code
-# Section 1
+# Section 1.
 ![image](https://github.com/user-attachments/assets/88534ff2-ce48-4328-9190-493ab2a0f969)
 
 Please watch out my medium article to understand the steps I followed
@@ -10,7 +10,7 @@ Please watch out my medium article to understand the steps I followed
 
 # https://medium.com/@bijumathewt/databricks-asset-bundle-deployment-using-databricks-cli-and-vs-code-a9519deba958  
 
-# Section 2  - Process Order Data using Medallion 
+# Section 2.  - Process Order Data using Medallion 
 
 ![image](https://github.com/user-attachments/assets/08a253cc-2edc-4f9f-8a57-d15ada6a2b23)
 
@@ -49,7 +49,7 @@ I have used Unity Catalog to store delta tables.
   
 
 
-# Section 3 - DLT
+# Section 3. - DLT
 ![image](https://github.com/user-attachments/assets/83a3675c-9daf-4082-b730-860ebf107606)
 
 
@@ -70,7 +70,7 @@ I have used Unity Catalog to store delta tables.
 ![image](https://github.com/user-attachments/assets/142b1326-8a24-4c43-94ba-b0b1334a0a5d)
 
 
-# Section 4 Autoloader Streaming using Unity Catalog
+# Section 4. Autoloader Streaming using Unity Catalog
 
 ![image](https://github.com/user-attachments/assets/6fdde8c7-bd43-4508-86d8-3aa097541a55)
 
@@ -91,7 +91,7 @@ I have used Unity Catalog to store delta tables.
 
 
 
-# Section 5 Copying data from  Azure SQL to Databricks Unity Catalog using JDBC
+# Section 5. Copying data from  Azure SQL to Databricks Unity Catalog using JDBC
 
 ![image](https://github.com/user-attachments/assets/b3fdfc1b-c26f-4150-aafe-2c4b17ee83b5)
 
